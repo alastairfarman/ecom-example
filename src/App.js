@@ -47,7 +47,7 @@ export default function App() {
     ]);
   }
 
-  /////////////////////// Pages ////////////////////////////
+  /////////////////////// Conditional Rendering ////////////////////////////
 
   function PageRender() {
     switch (navPage) {
@@ -65,7 +65,15 @@ export default function App() {
     }
   }
 
-  function Home() {}
+  function Home() {
+    return(
+      <>
+      <div className="startpage">
+        <img src="./img/minimum-logo-paths.svg" alt="" />
+      </div>
+      </>
+    )
+  }
 
   function Product() {
     return (

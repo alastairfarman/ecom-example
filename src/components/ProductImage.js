@@ -21,7 +21,7 @@ export default function ProductImage(props) {
     },
   });
 
-  const imgUrl = `/img/${props.selectedProduct}/${sliderValue}.png`;
+  const imgUrl = `./img/${props.selectedProduct}/${sliderValue}.png`;
   return (
     <>
       <div className="product-image-container">

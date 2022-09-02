@@ -2,7 +2,7 @@
   "name": "ecom-two",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://alastairfarman.github.io/ecom-example",
+  "homepage": ".",
   "dependencies": {
     "@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",

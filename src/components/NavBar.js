@@ -6,13 +6,13 @@ import BasketCounter from "./BasketCounter";
 export default function NavBar(props) {
   const handleOnClick = useCallback((event) => {
     props.setNavPage(event.target.id);
-  });
+  },[props]);
 
   return (
     <>
       <nav>
         <div id="logo">
-          <img src="/img/minimum-logo-paths.png" alt="" />
+          <img src="/img/minimum-logo-paths.png" onClick={handleOnClick} id="Home" alt="" />
         </div>
         <ul className="nav">
           <li onClick={handleOnClick} id="Product">
