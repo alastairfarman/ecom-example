@@ -93,7 +93,12 @@ export default function App() {
     );
   }
 
-  function About() {}
+  function About() {
+    return (
+      <>
+      <p>This is a demo website to practice React.js, test an idea for 3D rendered product images and attempt to build shopping bag functionality.</p></>
+    )
+  }
 
   return (
     <>

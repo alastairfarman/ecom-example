@@ -21,6 +21,23 @@ export default function ProductImage(props) {
     },
   });
 
+  ////// preload images //////
+
+  let preload = [];
+  
+  (function preloadImg() {
+    for (let i = 0; i < 32; ++i){
+      let imgUrl = `./img/${props.selectedProduct}/${i}.png`;
+      let preloadElement = document.createElement("img")
+      preloadElement.src =imgUrl
+      preload.push(preloadElement)
+    }
+  })()
+
+  console.log(preload)
+
+
+
   const imgUrl = `./img/${props.selectedProduct}/${sliderValue}.png`;
   return (
     <>
