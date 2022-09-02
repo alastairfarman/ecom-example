@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/ecom-example/static/css/main.35f9f648.css",
+    "main.js": "/ecom-example/static/js/main.9c13c035.js",
+    "index.html": "/ecom-example/index.html",
+    "main.35f9f648.css.map": "/ecom-example/static/css/main.35f9f648.css.map",
+    "main.9c13c035.js.map": "/ecom-example/static/js/main.9c13c035.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.35f9f648.css",
+    "static/js/main.9c13c035.js"
+  ]
+}
