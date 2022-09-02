@@ -1,25 +1,103 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import ProductImage from "./components/ProductImage";
+import ProductInfo from "./components/ProductInfo";
+import NavBar from "./components/NavBar";
+import LargeImage from "./components/LargeImage";
+const { products } = require("./assets/data.json");
 
-function App() {
+export default function App() {
+  //set state of product id
+  const [selectedProduct, setSelectedProduct] = useState(1);
+
+  //set state of basket content
+
+  const [basketContent, setBasketContent] = useState([]);
+
+  //set basket open state
+
+  const [isOpen, setIsOpen] = useState("basket-closed");
+
+  const [navPage, setNavPage] = useState("Home");
+
+  //////////////////////////////////////////////////////////
+
+  function addToBasket(productToAdd) {
+    if (selectedProduct === productToAdd) {
+      let product = products.find((x) => x.id === parseInt(selectedProduct));
+      setBasketContent((current) => [...current, product]);
+    }
+    let logo = document.getElementById("logo");
+
+    if (logo.className === "") {
+      logo.setAttribute("class", "spin");
+    } else {
+      logo.setAttribute("class", "");
+    }
+
+    setIsOpen("basket-open");
+  }
+
+  function removeFromBasket(productToRemove) {
+    let product = basketContent.find((x) => x.id === parseInt(productToRemove));
+    let index = basketContent.indexOf(product);
+    setBasketContent((current) => [
+      ...current.slice(0, index),
+      ...current.slice(index + 1),
+    ]);
+  }
+
+  /////////////////////// Pages ////////////////////////////
+
+  function PageRender() {
+    switch (navPage) {
+      case "Product":
+        return <Product />;
+
+      case "Home":
+        return <Home />;
+
+      case "About":
+        return <About />;
+
+      default:
+        return "error 404 lol";
+    }
+  }
+
+  function Home() {}
+
+  function Product() {
+    return (
+      <div className="Content">
+        <div id="product-hero-section" className={isOpen}>
+          <ProductImage selectedProduct={selectedProduct} />
+          <ProductInfo
+            products={products}
+            selectedProduct={selectedProduct}
+            setSelectedProduct={setSelectedProduct}
+            addToBasket={addToBasket}
+          />
+        </div>
+        <LargeImage selectedProduct={selectedProduct} />
+        <LargeImage view="alt" selectedProduct={selectedProduct} />
+      </div>
+    );
+  }
+
+  function About() {}
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <NavBar
+        basketContent={basketContent}
+        selectedProduct={selectedProduct}
+        removeFromBasket={removeFromBasket}
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        setNavPage={setNavPage}
+      />
+      <PageRender />
+    </>
   );
 }
-
-export default App;
